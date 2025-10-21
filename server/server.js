@@ -14,9 +14,10 @@ const app = express();
 app.use(cors({
     origin: ["https://tod-task-list.netlify.app/"]
 }));
+
 app.use(express.json());
 
-app.use("/api/tasks", taskRoutes);
+app.use("/tasks", taskRoutes);
 
 app.get('/',(req, res)=>{
     res.send({
