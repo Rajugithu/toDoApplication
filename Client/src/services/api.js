@@ -1,14 +1,22 @@
-const API_BASE = "http://localhost:5000/api/tasks";
-// const API_BASE = "/api/tasks";
+// This will not work on Netlify
+// const API_BASE = "http://localhost:5000/api/tasks";
+
+// This will also not work with the proxy (and would cause CORS errors)
+// const API_BASE = "https://to-do-application-liard.vercel.app/api/tasks";
+
+// THIS IS THE CORRECT LINE FOR DEPLOYMENT
+const API_BASE = "/api/tasks";
 
 // Get all tasks
 export const fetchTasks = async () => {
+  // This will now correctly request /api/tasks
   const response = await fetch(API_BASE);
   return await response.json();
 };
 
 // Add new task
 export const createTask = async (taskData) => {
+  // This will correctly request /api/tasks/add
   const response = await fetch(`${API_BASE}/add`, {
     method: "POST",
     headers: {
@@ -21,6 +29,7 @@ export const createTask = async (taskData) => {
 
 // Update task
 export const updateTask = async (id, taskData) => {
+  // This will correctly request /api/tasks/update/some-id
   const response = await fetch(`${API_BASE}/update/${id}`, {
     method: "PUT",
     headers: {
@@ -33,6 +42,7 @@ export const updateTask = async (id, taskData) => {
 
 // Delete task
 export const deleteTask = async (id) => {
+  // This will correctly request /api/tasks/delete/some-id
   const response = await fetch(`${API_BASE}/delete/${id}`, {
     method: "DELETE",
   });
@@ -41,6 +51,7 @@ export const deleteTask = async (id) => {
 
 // Enhance text with AI
 export const enhanceText = async (text) => {
+  // This will correctly request /api/tasks/enhance
   const response = await fetch(`${API_BASE}/enhance`, {
     method: "POST",
     headers: {
