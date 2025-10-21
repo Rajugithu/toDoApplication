@@ -29,7 +29,7 @@ export default function TaskForm({ title, setTitle, desc, setDesc, addTask, enha
           disabled={loading || !desc}
           className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 disabled:bg-gray-400 transition duration-200"
         >
-          {loading ? "Enhancing..." : "Enhance with AI"}
+          {loading ? "Enhancing..." : "Improve with AI"}
         </button>
       </div>
     </div>
